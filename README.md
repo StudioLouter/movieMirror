@@ -3,7 +3,7 @@
 ## Pre-install
 Before you go ahead and install this project. Be aware that movies that will be reflected back by the 'mirror' will have to be supplied by the user. Secondly, a dataset of poses in the scenes of the movies will need to be generated and inserted into a MongoDB database. Without these steps, the 'mirror' has nothing to reflect.
 The user needs a webcam connected to the pc for the application to analyse.
-For furter, in depth, reading of the technical side of this project, please go to [Technisch Verslag](doc/technisch_verslag.md) (In Dutch)
+For further, in depth, reading of the technical side of this project, please go to [Technisch Verslag](docs/technisch_verslag.md) (In Dutch)
 
 ## How to install
 
@@ -35,5 +35,6 @@ yarn start
 ```
 To start up electron. 
 
-
+## Documentation
+Please go [here](https://cas-sl.github.io/movieMirror/) for documentation regarding the source code.
 
