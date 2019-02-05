@@ -1,0 +1,4397 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>MovieMirror 0.1.0 | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+  <meta name='description' content='The Movie Mirror is a software based prototype which makes poses queryable in cinematic video in a non semantic fashion'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>MovieMirror</h3>
+          <div class='mb1'><code>0.1.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#mediamanager'
+                  class=" toggle-sibling">
+                  MediaManager
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#mediamanagerloadvideo'
+                        class='regular pre-open'>
+                        .loadVideo
+                      </a></li>
+                    
+                      <li><a
+                        href='#mediamanagersetupcamera'
+                        class='regular pre-open'>
+                        .setupCamera
+                      </a></li>
+                    
+                      <li><a
+                        href='#mediamanagerretrievemoviescene'
+                        class='regular pre-open'>
+                        .retrieveMovieScene
+                      </a></li>
+                    
+                      <li><a
+                        href='#mediamanagerpause'
+                        class='regular pre-open'>
+                        .pause
+                      </a></li>
+                    
+                      <li><a
+                        href='#mediamanagerplay'
+                        class='regular pre-open'>
+                        .play
+                      </a></li>
+                    
+                      <li><a
+                        href='#mediamanagerputvideointowindowwithtime'
+                        class='regular pre-open'>
+                        .putVideoIntoWindowWithTime
+                      </a></li>
+                    
+                      <li><a
+                        href='#mediamanagergetvideopath'
+                        class='regular pre-open'>
+                        .getVideoPath
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#dbcontroller'
+                  class=" toggle-sibling">
+                  DBController
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#dbcontrollerconnect'
+                        class='regular pre-open'>
+                        .connect
+                      </a></li>
+                    
+                      <li><a
+                        href='#dbcontrollercalculatedelta'
+                        class='regular pre-open'>
+                        .calculateDelta
+                      </a></li>
+                    
+                      <li><a
+                        href='#dbcontrollercompare'
+                        class='regular pre-open'>
+                        .compare
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#dbcontrollerfind'
+                        class='regular pre-open'>
+                        #find
+                      </a></li>
+                      
+                      <li><a
+                        href='#dbcontrollerconstructparameters'
+                        class='regular pre-open'>
+                        #constructParameters
+                      </a></li>
+                      
+                      <li><a
+                        href='#dbcontrollerquerybuilder'
+                        class='regular pre-open'>
+                        #queryBuilder
+                      </a></li>
+                      
+                      <li><a
+                        href='#dbcontrolleraddquerymedianconditional'
+                        class='regular pre-open'>
+                        #addQueryMedianConditional
+                      </a></li>
+                      
+                      <li><a
+                        href='#dbcontrolleraddquerypartconditional'
+                        class='regular pre-open'>
+                        #addQueryPartConditional
+                      </a></li>
+                      
+                      <li><a
+                        href='#dbcontrollersetcomparefilters'
+                        class='regular pre-open'>
+                        #setCompareFilters
+                      </a></li>
+                      
+                      <li><a
+                        href='#dbcontrollergetcombarableposes'
+                        class='regular pre-open'>
+                        #getCombarablePoses
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#filterlist'
+                  class="">
+                  filterList
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#query'
+                  class="">
+                  query
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#posecontroller'
+                  class=" toggle-sibling">
+                  PoseController
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#posecontrollerloadmodel'
+                        class='regular pre-open'>
+                        .loadModel
+                      </a></li>
+                    
+                      <li><a
+                        href='#posecontrollerconnecttodb'
+                        class='regular pre-open'>
+                        .connectToDb
+                      </a></li>
+                    
+                      <li><a
+                        href='#posecontrollerincrscenecounter'
+                        class='regular pre-open'>
+                        .incrSceneCounter
+                      </a></li>
+                    
+                      <li><a
+                        href='#posecontrollergetposefromframe'
+                        class='regular pre-open'>
+                        .getPoseFromFrame
+                      </a></li>
+                    
+                      <li><a
+                        href='#posecontrollergetmedianposition'
+                        class='regular pre-open'>
+                        .getMedianPosition
+                      </a></li>
+                    
+                      <li><a
+                        href='#posecontrollercreateexporetabledata'
+                        class='regular pre-open'>
+                        .createExporetableData
+                      </a></li>
+                    
+                      <li><a
+                        href='#posecontrollerreplacekeypointswithobjects'
+                        class='regular pre-open'>
+                        .replaceKeyPointsWithObjects
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#coordinates'
+                  class="">
+                  Coordinates
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#animatein'
+                  class="">
+                  animateIn
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#viewcontroller'
+                  class=" toggle-sibling">
+                  ViewController
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#viewcontrollerfade'
+                        class='regular pre-open'>
+                        .fade
+                      </a></li>
+                    
+                      <li><a
+                        href='#viewcontrollerwebcam'
+                        class='regular pre-open'>
+                        .webcam
+                      </a></li>
+                    
+                      <li><a
+                        href='#viewcontrollerscene'
+                        class='regular pre-open'>
+                        .scene
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#soundmanager'
+                  class=" toggle-sibling">
+                  SoundManager
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#soundmanagerattract'
+                        class='regular pre-open'>
+                        .Attract
+                      </a></li>
+                    
+                      <li><a
+                        href='#soundmanagerengage'
+                        class='regular pre-open'>
+                        .Engage
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='mediamanager'>
+      MediaManager
+    </h3>
+    
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>new MediaManager()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='mediamanagerloadvideo'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>loadVideo(type, fileinfo)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Loads a video or a webcam</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>loadVideo(type: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, fileinfo: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>): Video</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    String describing what kind of media is being used as the input. Is either webcam or video.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>fileinfo</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            = <code>null</code>)</code>
+	    Object describing the video to load.
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>fileinfo.movieName</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
+  </td>
+  <td class='break-word'><span>Name of the video
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>fileinfo.sceneCounter</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
+  </td>
+  <td class='break-word'><span>The scene to load.
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Video</code>:
+        video
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='mediamanagersetupcamera'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setupCamera()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Sets up the webcam for input</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>setupCamera(): Video</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Video</code>:
+        Video HTML element
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='mediamanagerretrievemoviescene'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>retrieveMovieScene(pose)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Retreives path of video</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>retrieveMovieScene(pose: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pose</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Pose object containing meta information about the movie to look for
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>:
+        Either false if path can not be found, or string of the path if it has.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='mediamanagerpause'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>pause(sceneNumber, waitTime)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Pause a scene</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>pause(sceneNumber: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, waitTime: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sceneNumber</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Scene to pause
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>waitTime</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Amount of milis to play before pause
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='mediamanagerplay'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>play(sceneNumber, untilTime, delay)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Plays a video DOM element</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>play(sceneNumber: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, untilTime: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, delay: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sceneNumber</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Scene to pause
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>untilTime</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Plays until milis has been elapsed
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>delay</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
+            = <code>0</code>)</code>
+	    Amount of milis to wait before playback
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='mediamanagerputvideointowindowwithtime'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>putVideoIntoWindowWithTime(pathToFile, sceneNumber, time)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Places a video inside a DOM element with a specified time as its startpoint.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>putVideoIntoWindowWithTime(pathToFile: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, sceneNumber: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, time: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): Video</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pathToFile</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Path to the video file
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sceneNumber</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The scene number that will be played
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>time</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Amount of milis to set as the astartpoint of the video
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Video</code>:
+        return the video DOM element
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='mediamanagergetvideopath'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getVideoPath(filename, sceneCount)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Actual path finder.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getVideoPath(filename: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, sceneCount: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>filename</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    name of the file to search for
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sceneCount</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    the scene id to look for
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>:
+        either false if path is not found, or the path stringified if it has been found.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='dbcontroller'>
+      DBController
+    </h3>
+    
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>new DBController()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='dbcontrollerconnect'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>connect(verbose)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Connects to MongoDB using credentials from Settings.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>connect(verbose: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>verbose</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
+            = <code>false</code>)</code>
+	    logs connection status if true
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dbcontrollercalculatedelta'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>calculateDelta(comparePose, pose)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Calculate coordinate distance between pose found in webcam and that of database.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>calculateDelta(comparePose: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, pose: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>comparePose</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Pose from webcam to compare from
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pose</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Pose from database to compare to.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        The pose now with an added difference (delta) added.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dbcontrollercompare'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>compare(a, b)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Sort algorithm for MongoDb sorting</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>compare(a: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, b: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>a</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    first number to compare from.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>b</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    second number to compare to.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></code>:
+        Sorting order (-1 if smaller then, 1 if bigger then)
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='dbcontrollerfind'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>find(query, poses)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>find(query: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, poses: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>query</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Query formated for MongoDB
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>query._id</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>
+  </td>
+  <td class='break-word'><span>The id filter for MongoDB to start the query from ( so skipping all id's in front of it)
+</span></td>
+</tr>
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>query._id.$gt</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></code>
+  </td>
+  <td class='break-word'><span>The id.
+</span></td>
+</tr>
+
+
+  
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>poses</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Poses that were found to sort on nearest with.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
+        Returns sorted list of comparable poses
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dbcontrollerconstructparameters'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>constructParameters(amountOfPersons, multiplier)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Construct parameters list with an insecure ratio from where we can construct the query for MongoDB.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>constructParameters(amountOfPersons: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, multiplier: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="#filterlist">filterList</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>amountOfPersons</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Amount of persons that are found in webcam
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>multiplier</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Current multiplier to increase pixel range from
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#filterlist">filterList</a></code>:
+        Returns an object that you can feed to MongoDB as a query
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dbcontrollerquerybuilder'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>queryBuilder(poses, params, skipThisMovie)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Construct the MongoDB formatted query to filter for comparable poses.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>queryBuilder(poses: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, params: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, skipThisMovie: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;Query></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>poses</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    contains the PoseNet found poses
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>poses.poses</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>
+  </td>
+  <td class='break-word'><span>The list of all found poses
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>poses.meta</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>
+  </td>
+  <td class='break-word'><span>Meta information about the found poses
+</span></td>
+</tr>
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>poses.meta.amountOfPoses</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></code>
+  </td>
+  <td class='break-word'><span>Amount of poses that exist in the current frame
+</span></td>
+</tr>
+
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>poses.meta.movie</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>
+  </td>
+  <td class='break-word'><span>Title of the movie
+</span></td>
+</tr>
+
+
+  
+    <tr>
+  <td class='break-word'><span class='code bold'>poses.meta.sceneCount</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></code>
+  </td>
+  <td class='break-word'><span>The id of the scene inside of the movie
+</span></td>
+</tr>
+
+
+  
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>params</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    The parts that will make up each conditional in the query.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>skipThisMovie</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+	    A list of films that should be filtered
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;Query></code>:
+        blurblur
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dbcontrolleraddquerymedianconditional'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>addQueryMedianConditional(pose, poseNumber, insecure)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Construct a conditional specificly for the medianPosition (as its object structure is different then other parts)</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>addQueryMedianConditional(pose: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, poseNumber: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, insecure: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pose</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Pose to get the comparable poses from.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>poseNumber</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The index of the pose in the list
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>insecure</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The pixel distance currently allowed for the comparable pose to be inside of.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Returns the conditional
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      <p><p>Example of an conditional where the medianPosition must fit between (lower then, greater then) of specific x &#x26; y positions</p>
+</p>
+      <pre class='p1 overflow-auto round fill-light'>{
+  $and": [
+    { "poses.1.medianPosition.x": { "$gt":659.87 } },
+    { "poses.1.medianPosition.x": { "$lt":719.87 } },
+    { "poses.1.medianPosition.y": { "$gt":434.82 } },
+    { "poses.1.medianPosition.y": { "$lt":494.82 } }
+  ]
+}</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dbcontrolleraddquerypartconditional'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>addQueryPartConditional(pose, poseNumber, part, paramIncreasingMultiplier, insecure)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Construct a conditional for pose parts.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>addQueryPartConditional(pose: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, poseNumber: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, part: any, paramIncreasingMultiplier: any, insecure: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pose</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Pose to get the comparable poses from.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>poseNumber</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The index of the pose in the list
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>part</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>paramIncreasingMultiplier</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>insecure</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The pixel distance currently allowed for the comparable pose to be inside of.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Returns the conditional
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      <p><p>Example of an conditional where the medianPosition must fit between (lower then, greater then) of specific x &#x26; y positions</p>
+</p>
+      <pre class='p1 overflow-auto round fill-light'>{
+  $and": [
+    { "poses.1.nose.x": { "$gt":659.87 } },
+    { "poses.1.nose.x": { "$lt":719.87 } },
+    { "poses.1.nose.y": { "$gt":434.82 } },
+    { "poses.1.nose.y": { "$lt":494.82 } }
+  ]
+}</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dbcontrollersetcomparefilters'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setCompareFilters(poses)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Sets DBControllers compareFilters, indicating which pose parts should be compared with the query. In this case, it looks for hands being far away from the pose's hips. If thats the case, the wrists will be used inside the compare query, otherwise it won't.  It will also set other parts to off, to ensure more poses match the wrists instead of other less 'meiningful' pose parts.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>setCompareFilters(poses: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>poses</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Poses that are being scanned of 'expressive' hands
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dbcontrollergetcombarableposes'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getCombarablePoses(poses, queryMultiplier, skipThisMovie)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>This queries the database, trying to find comparable poses matching the currently found pose from the webcam stream.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getCombarablePoses(poses: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, queryMultiplier: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, skipThisMovie: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>poses</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>queryMultiplier</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>skipThisMovie</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>
+            = <code>null</code>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='filterlist'>
+      filterList
+    </h3>
+    
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>filterList</div>
+   
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>medianPosition</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>?)</code>
+          : Pixel distance to look for
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>nose</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>?)</code>
+          : Pixel distance to look for
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>leftEye</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>?)</code>
+          : Pixel distance to look for
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>rightEye</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>?)</code>
+          : Pixel distance to look for
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>leftShoulder</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>?)</code>
+          : Pixel distance to look for
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>rightShoulder</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>?)</code>
+          : Pixel distance to look for
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>leftWrist</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>?)</code>
+          : Pixel distance to look for
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>rightWrist</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>?)</code>
+          : Pixel distance to look for
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='query'>
+      query
+    </h3>
+    
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>query</div>
+   
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>$and</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+          : List of all conditionals
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='posecontroller'>
+      PoseController
+    </h3>
+    
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>new PoseController()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='posecontrollerloadmodel'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>loadModel()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Load posenet model</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>loadModel()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='posecontrollerconnecttodb'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>connectToDb()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Connect to MongoDB</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>connectToDb()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='posecontrollerincrscenecounter'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>incrSceneCounter()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Increments sceneCounter</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>incrSceneCounter()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='posecontrollergetposefromframe'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getPoseFromFrame(video)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Uses PoseNet to analyse a video for poses</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getPoseFromFrame(video: <a href="https://developer.mozilla.org/docs/Web/HTML/Element">HTMLElement</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>video</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/HTML/Element">HTMLElement</a>)</code>
+	    The video HTMLelement to analyse
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Return an collection (if applicable) of poses that were found
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='posecontrollergetmedianposition'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getMedianPosition(keypoints)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Calculates a median of all induvidual points found in a point for more performant queries later on.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getMedianPosition(keypoints: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#coordinates">Coordinates</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>keypoints</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Collection on points
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#coordinates">Coordinates</a></code>:
+        Coordinates of the median position
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='posecontrollercreateexporetabledata'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>createExporetableData(poses)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Formats the raw poses data returned from PoseNet to a useable format</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>createExporetableData(poses: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>poses</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    The raw poses returned from PoseNet
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Return formatted Object conforming to usable standards
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='posecontrollerreplacekeypointswithobjects'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>replaceKeyPointsWithObjects(pose)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Converts arrays inside poses into a objects</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>replaceKeyPointsWithObjects(pose: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pose</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Raw pose data from PoseNet
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Return the pose keypoint as an object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='coordinates'>
+      Coordinates
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Simple object holding an x and y value</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>Coordinates</div>
+   
+  
+    <p>
+      Type:
+      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Properties</div>
+    <div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>x</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+          : The x coordinate of the median position
+
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <span class='code bold'>y</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+          : The y coordinate of the median position
+
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='animatein'>
+      animateIn
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Fades in the text</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>animateIn(animation: any, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>, string: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>animation</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Callback to execute after animation has finished
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>string</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='viewcontroller'>
+      ViewController
+    </h3>
+    
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>new ViewController()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='viewcontrollerfade'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>fade(el, animation, speed)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>General fade method</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>fade(el: <a href="https://developer.mozilla.org/docs/Web/HTML/Element">HTMLElement</a>, animation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, speed: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)): any</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>el</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/HTML/Element">HTMLElement</a>)</code>
+	    The element to fade
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>animation</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Type of fade (ex: 'fadeIn' will fade in)
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>speed</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)
+            = <code>&#39;&#39;</code>)</code>
+	    Duration in milis of animation, defaults to whatever is set in css. This sets the classname, so the class must also be presented in css
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerwebcam'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>webcam()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Controls webcam viewing</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>webcam(): any</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='viewcontrollerwebcamloadstream'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>loadStream(wbcm)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Loads the webcam stream</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>loadStream(wbcm: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>wbcm</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerwebcamshowframe'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>showFrame()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Shows the webcam still</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>showFrame()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerwebcamhideframe'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hideFrame()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Hides the current webcam still</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>hideFrame()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerwebcamshowstream'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>showStream()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Shows the webcam stream</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>showStream()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerwebcamhidestream'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hideStream()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Hides the webcam stream</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>hideStream()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerwebcamopacity'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>opacity(target, opacity, speed, easeString)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Changes the webcam opacity</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>opacity(target: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, opacity: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, speed: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, easeString: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>target</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Define target that you want the opacity to change for. Either webcam or frame.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>opacity</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Opacity to change to
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>speed</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
+            = <code>1500</code>)</code>
+	    Duration of fade
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>easeString</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+            = <code>&#39;linear&#39;</code>)</code>
+	    Easing of fade
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerscene'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>scene(sceneNumber, movieName)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Controls a scene video</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>scene(sceneNumber: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, movieName: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sceneNumber</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Which scene to control
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>movieName</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+            = <code>null</code>)</code>
+	    Name of the video to control
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='viewcontrollerscenehide'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hide()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Hides the scene</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>hide()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollersceneshow'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>show()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Shows the scene</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>show()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollersceneanimatein'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>animateIn(animation, callback)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Fades in the scene</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>animateIn(animation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>animation</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The animation to execute (ex: 'fadeIn')
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Callback to execute after animation has finished
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollersceneanimateout'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>animateOut(animation, callback)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Fades in the scene</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>animateOut(animation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>animation</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The animation to execute (ex: 'fadeOut')
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Callback to execute after animation has finished
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerscenecrop'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>crop()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Crops in the scene into a rectangle</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>crop()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerscenescenetext'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>sceneText(sceneNumber)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Container for the scene text methods</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>sceneText(sceneNumber: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>sceneNumber</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    The scene to set the text for
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='viewcontrollerscenescenetextchangetext'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>changeText(text)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Changes the text under the stream</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>changeText(text: any)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>text</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerscenescenetextsetposition'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setPosition()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Sets the position of the scene HTMLElement</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>setPosition()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerscenescenetextshow'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>show()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Showsthe text</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>show()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerscenescenetexthide'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>hide()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Hides the text</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>hide()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='viewcontrollerscenescenetextanimateout'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>animateOut(animation, callback)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Fades out the text</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>animateOut(animation: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, callback: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>animation</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The animation to execute (ex: 'fadeOut')
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Callback to execute after animation has finished
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='soundmanager'>
+      SoundManager
+    </h3>
+    
+    
+  </div>
+  
+
+  
+ 
+  
+    <div class='pre p1 fill-light mt0'>new SoundManager()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='soundmanagerattract'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>Attract()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Controls Attract sound</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>Attract(): any</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        Returns methods for adjusting sound on Attract
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='soundmanagerattractmute'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>mute()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Mute attract video</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>mute()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='soundmanagerattractunmute'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>unmute()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Unmute attract video</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>unmute()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='soundmanagerengage'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>Engage()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Controls Engage sound</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>Engage(): any</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        Returns methods for adjusting sound on Engage
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='soundmanagerengagemute'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>mute()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Unmute engage videos</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>mute()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='soundmanagerengageunmute'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>unmute()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Unmute engage videos</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>unmute()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
