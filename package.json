@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron ./dist/main/main.js",
     "pack": "webpack",
-    "doc": "documentation build ./src/renderer/index.js -f html -o doc2",
+    "doc": "documentation build ./src/renderer/index.js -f html -o doc",
     "doc:preview": "documentation serve ./src/renderer/index.js --watch"
   },
   "dependencies": {
