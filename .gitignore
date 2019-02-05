@@ -1,7 +1,6 @@
 /node_modules
 /dist
 /static/*
-/docs
 /doc2
 !/static/static_files_here.file
 !/static/MovieDimensions.yaml
