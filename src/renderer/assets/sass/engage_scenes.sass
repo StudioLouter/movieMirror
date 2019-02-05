@@ -1,0 +1,78 @@
+.videoContainer
+  display: inline-block
+  position: relative
+  text-align: center
+  width: 100%
+  overflow: hidden
+  // margin-top: 308px
+  margin-top: 408px
+
+#webcamStream
+  position: absolute
+  width: auto
+  height: 160px
+  transform: translateX( Calc( -284.44px / 2)) scale(-1,1)
+  left: calc((1920px /2 )  )
+  // bottom: 130px
+  bottom: 30px
+  -webkit-filter: grayscale(100%)
+  -moz-filter: grayscale(100%)
+  -ms-filter: grayscale(100%)
+  -o-filter: grayscale(100%)
+  filter: grayscale(100%)
+
+#webcamFrame
+  position: absolute
+  width: auto
+  height: 160px
+  transform: translateX( Calc( -284.44px / 2))
+  left: calc((1920px / 2 ))
+  // bottom: 130px
+  bottom: 30px
+  object-fit: contain
+  -webkit-filter: grayscale(100%)
+  -moz-filter: grayscale(100%)
+  -ms-filter: grayscale(100%)
+  -o-filter: grayscale(100%)
+  filter: grayscale(100%)
+
+.textContainer
+  position: absolute
+  // top: 284px
+  top: 384px
+
+.videoWindowContainer
+  overflow: hidden
+  height: 360px
+  display: inline-block
+
+.videoWindow
+  display: block
+  object-fit: cover
+  height: 360px
+
+#sceneOutput0
+  bottom: calc((1080px / 6) * 2.5)
+  right: calc(1920px / 2)
+  bottom: 0
+  right: 0
+  width: calc(1920px / 2)
+
+#sceneOutput1
+  bottom: calc((1080px / 6) * 2.5)
+  right: calc(1920px / 4)
+  bottom: 0
+  right: auto
+  left: 0
+  width: calc(1920px / 4)
+
+#sceneOutput2
+  bottom: calc((1080px / 6) * 4)
+  right: calc(1920px / 4)
+  bottom: 270px
+  right: auto
+  left: 0
+  width: calc(1920px / 4)
+
+.easeIn
+  animation-timing-function: cubic-bezier(.47,.76,.71,.14)

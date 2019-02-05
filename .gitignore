@@ -1,0 +1,13 @@
+/node_modules
+/dist
+/static/*
+/docs
+/doc2
+!/static/static_files_here.file
+!/static/MovieDimensions.yaml
+!/static/fonts/
+!/static/images
+!/static/data
+/mongoBackups
+/_AE
+.vscode
