@@ -39,6 +39,14 @@ yarn run pack
 It will keep watching for changes in source, and rebuild the distribute files if necessary.
 
 
+## Config
+Once you have set up you MongoDB database, edit ``./src/renderer/assets/settings/Settings.js`` to reflect your MongoDB settings by changing the `database.name`, `database.host` and `database.collectionName`
+
+Furthermore, scenes of the movies need to go inside `./static/video/scenes/{movieName}`. Inside this folder the filename should be named as `{movieName}-{###}.webm`.
+
+> `{movieName}` Being the name of the movie without spaces, `{###}` the scene count.
+
+The movie should then be added to `./static/data/MovieDimensions.yaml` width its width in pixels set. The video file should always have a height of 1080 pixels. 
 
 
 ## Start
