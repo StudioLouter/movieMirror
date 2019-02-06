@@ -15,33 +15,39 @@ For further in depth reading of the technical side of this project, and for a ex
 
 ## How to install
 
-Clone this repo into a desired directory
-```cmd
-cd desired/location/of/project
+Clone this repo into a directory:
+```
+cd path/to/directory
 git clone https://github.com/studiolouter/movieMirror
 ```
 
-Change directory to the repo that was just cloned
-```cmd
+Change directory to the repo that was just cloned:
+```
 cd movieMirror
 ```
 
-And install its dependencies
-```cmd
+And install its dependencies:
+```
 yarn
 ```
 
-Build the distribute folder from source by running
-```cmd
+Build the distribute folder from source:
+```
 yarn run pack
 ```
 
 It will keep watching for changes in source, and rebuild the distribute files if necessary.
 
+
+
+
+## Start
+
 When the build is succesful, start up a second terminal and run the following command to start the application
-```cmd
+```
 yarn start
 ```
+
 
 ## Documentation
 Please go [here](https://studiolouter.github.io/movieMirror/) for documentation regarding the source code.
