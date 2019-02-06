@@ -3,7 +3,7 @@
 
 The Movie Mirror is an interactive installation that utilizes TensorFlow's PoseNet, matching the user’s camera images with historical footage from over sixty films from the collection of the EYE Filmmuseum. From black-and-white classics and animations to short experimental films.
 
-To see the installation in action at the Netherlands Film Festival, see [this video](https://vimeo.com/297292021).
+To see the installation in action at the Netherlands Film Festival, see [this video](https://vimeo.com/297292021) (in Dutch).
 
 
 ## Pre-install
