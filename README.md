@@ -7,41 +7,55 @@ To see the installation in action at the Netherlands Film Festival, see [this vi
 
 
 ## Pre-install
-Before you go ahead and install this project. Be aware that movies that will be reflected back by the 'mirror' will have to be supplied by the user. Secondly, a dataset of poses in the scenes of the movies will need to be generated and inserted into a MongoDB database. Without these steps, the 'mirror' has nothing to reflect.
+Before you go ahead and install this project be aware that movies that will be reflected back by the 'mirror' will have to be supplied by the user. Secondly, a dataset of poses in movies will need to be generated and inserted into a MongoDB database. Without these steps, the 'mirror' has nothing to reflect.
 
 Also, the user needs a webcam connected to the pc for the application to analyse.
 
-For further in depth reading of the technical side of this project, and for a explainaiting how you could create your own database please go to [Technisch Verslag](docs/technisch_verslag.md) (In Dutch)
+For further in depth reading of the technical side of this project, and for a explanation how you could create your own database please go to [Technisch Verslag](docs/technisch_verslag.md) (In Dutch)
 
 ## How to install
 
-Clone this repo into a desired directory
-```cmd
-cd desired/location/of/project
+Clone this repo into a directory:
+```
+cd path/to/directory
 git clone https://github.com/studiolouter/movieMirror
 ```
 
-Change directory to the repo that was just cloned
-```cmd
+Change directory to the repo that was just cloned:
+```
 cd movieMirror
 ```
 
-And install its dependencies
-```cmd
+And install its dependencies:
+```
 yarn
 ```
 
-Build the distribute folder from source by running
-```cmd
+Build the distribute folder from source:
+```
 yarn run pack
 ```
 
 It will keep watching for changes in source, and rebuild the distribute files if necessary.
 
+
+## Config
+Once you have set up you MongoDB database, edit ``./src/renderer/assets/settings/Settings.js`` to reflect your MongoDB settings by changing the `database.name`, `database.host` and `database.collectionName`
+
+Furthermore, scenes of the movies need to go inside `./static/video/scenes/{movieName}`. Inside this folder the filename should be named as `{movieName}-{###}.webm`.
+
+> `{movieName}` Being the name of the movie without spaces, `{###}` the scene count.
+
+The movie should then be added to `./static/data/MovieDimensions.yaml` width its width in pixels set. The video file should always have a height of 1080 pixels. 
+
+
+## Start
+
 When the build is succesful, start up a second terminal and run the following command to start the application
-```cmd
+```
 yarn start
 ```
+
 
 ## Documentation
 Please go [here](https://studiolouter.github.io/movieMirror/) for documentation regarding the source code.
