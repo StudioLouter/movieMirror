@@ -12,7 +12,7 @@ For further, in depth, reading of the technical side of this project, please go 
 Clone this repo into a desired directory
 ```cmd
 cd desired/location/of/project
-git clone https://github.com/cas-sl/movieMirror
+git clone https://github.com/studiolouter/movieMirror
 ```
 
 Change directory to the repo that was just cloned
@@ -39,5 +39,5 @@ yarn start
 To start up electron. 
 
 ## Documentation
-Please go [here](https://cas-sl.github.io/movieMirror/) for documentation regarding the source code.
+Please go [here](https://studiolouter.github.io/movieMirror/) for documentation regarding the source code.
 
