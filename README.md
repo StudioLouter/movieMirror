@@ -1,5 +1,5 @@
 # MovieMirror
-![logo](/docs/assets/images/TheMovieMirror-1920logo.jpg?raw=true "Logo Title Text 2") 
+![logo](/docs/assets/images/TheMovieMirror-1920logo.jpg?raw=true "Logo of The Movie Mirror project where a woman is standing in front of a projected image where her pose is mimicked in different scenes.") 
 
 The Movie Mirror is an interactive installation that utilizes TensorFlow's PoseNet, matching the user’s camera images with historical footage from over sixty films from the collection of the EYE Filmmuseum. From black-and-white classics and animations to short experimental films.
 
