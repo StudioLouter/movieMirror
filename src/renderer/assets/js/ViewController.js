@@ -34,6 +34,7 @@ class ViewController {
           resolve(e)
         }, speed)
       } else if (animation === 'fadeOut') {
+        if (el[0].style.opacity === 0) return
         el.removeClass('animated')
         el.removeClass('fadeIn')
         el.animateCss('fadeOut', function (e) {
@@ -269,13 +270,13 @@ class ViewController {
     */
     this.hide = () => {
       return new Promise((resolve) => {
-        if (el.css('opacity') === 0) {
+        if (el.css('opacity') == 0) {
           resolve()
-          return
+        } else {
+          this.animateOut('fadeOut', function () {
+            el.css('opacity', 0)
+          })
         }
-        this.animateOut('fadeOut', function () {
-          el.css('opacity', 0)
-        })
       })
     }
 
@@ -763,7 +764,7 @@ class ViewController {
       }
       this.show = () => {
         return new Promise(resolve => {
-          if (el.css('opacity') === 1) {
+          if (el.css('opacity') == 1) {
             resolve()
             return
           }
