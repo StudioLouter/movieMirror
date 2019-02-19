@@ -14,14 +14,14 @@ class ViewController {
     console.manager('Initializing ViewController')
   }
 
-/** General fade method
- *
- *
- * @param {HTMLElement} el The element to fade
- * @param {string} animation Type of fade (ex: 'fadeIn' will fade in)
- * @param {string | Number} [speed=''] Duration in milis of animation, defaults to whatever is set in css. This sets the classname, so the class must also be presented in css
- * @returns
- * @memberof ViewController
+  /** General fade method
+   *
+   *
+   * @param {HTMLElement} el The element to fade
+   * @param {string} animation Type of fade (ex: 'fadeIn' will fade in)
+   * @param {string | Number} [speed=''] Duration in milis of animation, defaults to whatever is set in css. This sets the classname, so the class must also be presented in css
+   * @returns
+   * @memberof ViewController
  */
   fade (el, animation, speed = '') {
     return new Promise((resolve, reject) => {
