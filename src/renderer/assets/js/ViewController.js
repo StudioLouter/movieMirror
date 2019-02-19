@@ -270,7 +270,7 @@ class ViewController {
     */
     this.hide = () => {
       return new Promise((resolve) => {
-        if (el.css('opacity') == 0) {
+        if (el.css('opacity') === 0 || el.css('opacity') === '0') {
           resolve()
         } else {
           this.animateOut('fadeOut', function () {
@@ -764,7 +764,7 @@ class ViewController {
       }
       this.show = () => {
         return new Promise(resolve => {
-          if (el.css('opacity') == 1) {
+          if (el.css('opacity') === 1 || el.css('opacity') === '1') {
             resolve()
             return
           }
