@@ -3,7 +3,7 @@ class Settings {
     this.database = {
       name: 'zzw',
       host: 'mongodb://localhost:27017',
-      collectionName: 'houdingenv5'
+      collectionName: 'houdingen'
     }
     this.debug = {
       verbose: true,

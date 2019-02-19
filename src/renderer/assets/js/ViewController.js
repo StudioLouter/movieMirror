@@ -14,14 +14,14 @@ class ViewController {
     console.manager('Initializing ViewController')
   }
 
-/** General fade method
- *
- *
- * @param {HTMLElement} el The element to fade
- * @param {string} animation Type of fade (ex: 'fadeIn' will fade in)
- * @param {string | Number} [speed=''] Duration in milis of animation, defaults to whatever is set in css. This sets the classname, so the class must also be presented in css
- * @returns
- * @memberof ViewController
+  /** General fade method
+   *
+   *
+   * @param {HTMLElement} el The element to fade
+   * @param {string} animation Type of fade (ex: 'fadeIn' will fade in)
+   * @param {string | Number} [speed=''] Duration in milis of animation, defaults to whatever is set in css. This sets the classname, so the class must also be presented in css
+   * @returns
+   * @memberof ViewController
  */
   fade (el, animation, speed = '') {
     return new Promise((resolve, reject) => {
@@ -34,6 +34,7 @@ class ViewController {
           resolve(e)
         }, speed)
       } else if (animation === 'fadeOut') {
+        if (el[0].style.opacity === 0) return
         el.removeClass('animated')
         el.removeClass('fadeIn')
         el.animateCss('fadeOut', function (e) {
@@ -269,13 +270,13 @@ class ViewController {
     */
     this.hide = () => {
       return new Promise((resolve) => {
-        if (el.css('opacity') === 0) {
+        if (el.css('opacity') === 0 || el.css('opacity') === '0') {
           resolve()
-          return
+        } else {
+          this.animateOut('fadeOut', function () {
+            el.css('opacity', 0)
+          })
         }
-        this.animateOut('fadeOut', function () {
-          el.css('opacity', 0)
-        })
       })
     }
 
@@ -763,7 +764,7 @@ class ViewController {
       }
       this.show = () => {
         return new Promise(resolve => {
-          if (el.css('opacity') === 1) {
+          if (el.css('opacity') === 1 || el.css('opacity') === '1') {
             resolve()
             return
           }

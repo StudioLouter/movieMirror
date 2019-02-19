@@ -1,6 +1,6 @@
 // import { emojis } from './assets/js/utils.js' // this inmediatly calls emoji() which sets new console methods.
 import { settings } from './assets/js/Settings'
-import { utils } from './assets/js/utils'
+// import { utils } from './assets/js/utils'
 import { mediaManager } from './assets/js/mediaManager'
 import { dbClient } from './assets/js/dbController'
 import { poseController } from './assets/js/poseController'
