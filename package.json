@@ -8,6 +8,7 @@
     "start:client": "electron ./dist/main/main.js",
     "pack": "webpack",
     "start:database": "mongod --config database/config/default.cfg",
+    "database:restore": "mongorestore --db zzw --collection houdingen database/dump/zzw/houdingen.bson",
     "doc": "documentation build ./src/renderer/index.js -f html -o docs",
     "doc:preview": "documentation serve ./src/renderer/index.js --watch"
   },

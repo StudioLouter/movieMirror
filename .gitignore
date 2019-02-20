@@ -15,3 +15,5 @@
 !/database/data/.gitignore
 /database/logs/*
 !/database/logs/.gitignore
+/database/dump/*
+!/database/dump/.gitignore
