@@ -1,12 +1,14 @@
 {
   "name": "MovieMirror",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Cas Spoelstra <cas@studiolouter.nl>",
   "description": "The Movie Mirror is a software based prototype which makes poses queryable in cinematic video in a non semantic fashion",
   "license": "MIT",
   "scripts": {
-    "start": "electron ./dist/main/main.js",
+    "start:client": "electron ./dist/main/main.js",
     "pack": "webpack",
+    "start:database": "mongod --config database/config/default.cfg",
+    "database:restore": "mongorestore --db zzw --collection houdingen database/dump/zzw/houdingen.bson",
     "doc": "documentation build ./src/renderer/index.js -f html -o docs",
     "doc:preview": "documentation serve ./src/renderer/index.js --watch"
   },

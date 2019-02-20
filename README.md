@@ -38,6 +38,22 @@ yarn run pack
 
 It will keep watching for changes in source, and rebuild the distribute files if necessary.
 
+## Database
+Install [MongoDB](https://www.mongodb.com/) if you haven't already.
+
+If you want to import / restore a backup of the movieMirror data, run 
+
+```
+yarn database:restore
+```
+
+This will access the dump files and restore the data found in `movieMirror/database/dump/zzw/houdingen.bson`
+
+When the installation (and restoration) is succesful, start up a server by running 
+```
+yarn start:database
+```
+
 
 ## Config
 Once you have set up you MongoDB database, edit ``./src/renderer/assets/settings/Settings.js`` to reflect your MongoDB settings by changing the `database.name`, `database.host` and `database.collectionName`
@@ -53,7 +69,7 @@ The movie should then be added to `./static/data/MovieDimensions.yaml` width its
 
 When the build is succesful, start up a second terminal and run the following command to start the application
 ```
-yarn start
+yarn start:client
 ```
 
 

@@ -10,3 +10,10 @@
 /mongoBackups
 /_AE
 .vscode
+
+/database/data/*
+!/database/data/.gitignore
+/database/logs/*
+!/database/logs/.gitignore
+/database/dump/*
+!/database/dump/.gitignore
