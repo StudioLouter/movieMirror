@@ -1,6 +1,6 @@
 {
   "name": "MovieMirror",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Cas Spoelstra <cas@studiolouter.nl>",
   "description": "The Movie Mirror is a software based prototype which makes poses queryable in cinematic video in a non semantic fashion",
   "license": "MIT",
