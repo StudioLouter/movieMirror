@@ -1,6 +1,6 @@
 {
   "name": "MovieMirror",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Cas Spoelstra <cas@studiolouter.nl>",
   "description": "The Movie Mirror is a software based prototype which makes poses queryable in cinematic video in a non semantic fashion",
   "license": "MIT",
@@ -11,6 +11,9 @@
     "database:restore": "mongorestore --db zzw --collection houdingen database/dump/zzw/houdingen.bson",
     "doc": "documentation build ./src/renderer/index.js -f html -o docs",
     "doc:preview": "documentation serve ./src/renderer/index.js --watch"
+  },
+  "engines": {
+    "node": "10.15.1"
   },
   "dependencies": {
     "@tensorflow-models/posenet": "^0.1.3",
