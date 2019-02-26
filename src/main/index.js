@@ -3,7 +3,7 @@ import * as path from 'path'
 import { format as formatUrl } from 'url'
 require('dotenv').config()
 
-const isDevelopment = process.env.NODE_ENV !== 'production'
+const isDevelopment = process.env.stage !== 'production'
 
 let mainWindow
 
@@ -12,6 +12,7 @@ function createMainWindow () {
     {
       frame: false,
       kiosk: !isDevelopment,
+      fullscreen: !isDevelopment,
       width: 1920,
       height: 1080
     }
